@@ -8,6 +8,6 @@
 <body>
 
 <%= yield %>
-
+<%= built_javascript_include_tag "#{controller_path}/#{action_name}.js" %>
 </body>
 </html>
