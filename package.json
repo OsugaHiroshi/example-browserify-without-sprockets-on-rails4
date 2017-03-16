@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "$(npm bin)/mocha client/spec --recursive"
+    "test": "$(npm bin)/mocha client/spec --recursive",
+    "test:power-assert": "$(npm bin)/mocha client/spec --recursive --require client/enable-power-assert.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4#readme",
   "dependencies": {
-    "mocha": "^3.2.0"
+    "espower-loader": "^1.2.0",
+    "mocha": "^3.2.0",
+    "power-assert": "^1.4.2"
   }
 }
