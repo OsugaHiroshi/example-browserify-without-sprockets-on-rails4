@@ -1,11 +1,14 @@
 const browserify = require('browserify');
 const gulp = require('gulp');
 const gulpBuffer = require('gulp-buffer');
+const gulpRev = require('gulp-rev');
+const gulpRevFormat = require('gulp-rev-format');
 const eventStream = require('event-stream');
 const gulpPlumber = require('gulp-plumber');
 const gulpUglify = require('gulp-uglify');
 const gulpUtil = require('gulp-util');
 const gulpRename = require('gulp-rename');
+const YAML = require('yamljs');
 const envify = require('envify/custom');
 
 /**
@@ -30,6 +33,7 @@ const bundler = (filepath, envifyOption = {}) => {
 /**
  * @param {Object} buildParam
  * @param {Object} buildParam.jsSrcFiles 1st argument for gulp.src and list of entry points for browserify to bundle
+ * @param {string} buildParam.manifestFilePath output path of manifest yaml
  * @param {string} buildParam.jsDestPath destination directory
  *
  * @param {Object} [options]
@@ -41,6 +45,7 @@ const bundler = (filepath, envifyOption = {}) => {
 module.exports = function(buildParam, options) {
   var JS_SRC_FILES = buildParam.jsSrcFiles;
   var JS_DEST_PATH = buildParam.jsDestPath;
+  var MANIFEST_FILE_PATH = buildParam.manifestFilePath;
 
   options = Object.assign({
     isUglify: true,
@@ -91,6 +96,17 @@ module.exports = function(buildParam, options) {
             gulpUtil.log(error);
             throw error;
           })
+          .pipe(gulpRev())
+          .pipe(gulpRevFormat({
+            prefix: '_'
+          }))
           .pipe(isVerbose ? eventStream.map(printFilePath) : gulpUtil.noop())
+          .pipe(gulp.dest(JS_DEST_PATH))
+          .pipe(gulpRev.manifest({
+            base: JS_DEST_PATH,
+            merge: true,
+            path: MANIFEST_FILE_PATH,
+            transformer: YAML
+          }))
           .pipe(gulp.dest(JS_DEST_PATH));
 };

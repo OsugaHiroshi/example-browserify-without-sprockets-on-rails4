@@ -10,10 +10,12 @@ const ROOT = __dirname;
 const JS_SRC_FILES       = path.join(ROOT, 'client/src/**/*.*'); // watch target files
 const JS_SRC_ENTRY_FILES = path.join(ROOT, 'client/src/*/*.*'); // entry points of browserify
 const JS_DEST_PATH       = path.join(ROOT, 'public/client/builds'); // destination directory for built javasctipts
+const MANIFEST_FILE_PATH = path.join(ROOT, 'rev-manifest.yml');
 
 const jsBuildParams = {
   jsSrcFiles: [JS_SRC_ENTRY_FILES],
-  jsDestPath: JS_DEST_PATH
+  jsDestPath: JS_DEST_PATH,
+  manifestFilePath: MANIFEST_FILE_PATH
 };
 
 gulp.task('build:js:production', ['clean'], () => {
@@ -31,7 +33,8 @@ gulp.task('build:js:watch', ['clean'], () => {
 // delete manifest and bundled files
 gulp.task('clean', () => {
   return del([
-    JS_DEST_PATH
+    JS_DEST_PATH,
+    MANIFEST_FILE_PATH
   ]);
 });
 
