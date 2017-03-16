@@ -8,8 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "$(npm bin)/mocha client/spec --recursive",
-    "test:power-assert": "$(npm bin)/mocha client/spec --recursive --require client/enable-power-assert.js"
+    "test": "$(npm bin)/mocha client/spec --recursive  --compilers js:babel-register",
+    "test:power-assert": "$(npm bin)/mocha client/spec --recursive --require client/enable-power-assert.js --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,14 @@
   },
   "homepage": "https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4#readme",
   "dependencies": {
+    "babel-preset-react": "^6.23.0",
+    "babel-register": "^6.24.0",
+    "enzyme": "^2.7.1",
     "espower-loader": "^1.2.0",
     "mocha": "^3.2.0",
-    "power-assert": "^1.4.2"
+    "power-assert": "^1.4.2",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
