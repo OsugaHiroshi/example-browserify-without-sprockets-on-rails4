@@ -1,0 +1,23 @@
+{
+  "name": "example-browserify-without-sprockets-on-rails4",
+  "private": false,
+  "version": "1.0.0",
+  "description": "== README",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4/issues"
+  },
+  "homepage": "https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4#readme"
+}
