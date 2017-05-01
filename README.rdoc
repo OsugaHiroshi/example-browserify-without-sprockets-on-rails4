@@ -1,5 +1,5 @@
 this is rails4 with browserify example
 
-all implementations are in following pull request bellow
+all implementations are in following pull request
 
 https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4/pull/1
