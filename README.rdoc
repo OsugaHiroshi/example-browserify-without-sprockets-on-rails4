@@ -1,4 +1,4 @@
-this is rails4 with sprockets example
+this is rails4 with browserify example
 
 all implementations are in following pull request bellow
 
