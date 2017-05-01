@@ -1,4 +1,5 @@
 this is rails4 with sprockets example
 
 all implementations are in following pull request bellow
+
 https://github.com/OsugaHiroshi/example-browserify-without-sprockets-on-rails4/pull/1
