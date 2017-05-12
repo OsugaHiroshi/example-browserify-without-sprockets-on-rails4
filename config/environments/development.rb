@@ -38,4 +38,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # http://www.ohmyenter.com/how-to-do-something-on-reloading-on-rails/
+
+  # reload rev-manifest.yml when its updated
+  # @see also config/initializers/assets.rb
+  reloader = ActiveSupport::FileUpdateChecker.new(['rev-manifest.yml']) do
+    Rails.application.config.assets.rev_manifest = YAML.load_file('rev-manifest.yml') if File.exist?('rev-manifest.yml')
+  end
+  Rails.application.reloaders << reloader
+
+  ActionDispatch::Reloader.to_prepare do
+    reloader.execute_if_updated
+  end
 end
